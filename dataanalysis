@@ -83,3 +83,17 @@ query = "SELECT name FROM sqlite_master WHERE type='table';"
 tables = pd.read_sql_query(query, conn)
 print(tables)
 
+top_products = pd.read_sql_query(query, conn)
+print(top_products)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(top_products['item_name'], top_products['total_sales'])
+plt.xticks(rotation=45, ha="right")
+plt.title('Top 10 Products by Total Sales')
+plt.xlabel('Product Name')
+plt.ylabel('Total Sales')
+plt.tight_layout()
+
+plt.show()
