@@ -26,3 +26,23 @@ print(trans_df.head())
 print(item_df.head())
 print(store_df.head())
 print(customer_df.head())
+
+
+import sqlite3
+
+# Create an in-memory SQLite database
+conn = sqlite3.connect(':memory:')
+
+# Load DataFrames into SQL tables
+time_df.to_sql('time_dim', conn, index=False, if_exists='replace')
+fact_df.to_sql('fact_table', conn, index=False, if_exists='replace')
+trans_df.to_sql('trans_dim', conn, index=False, if_exists='replace')
+item_df.to_sql('item_dim', conn, index=False, if_exists='replace')
+store_df.to_sql('store_dim', conn, index=False, if_exists='replace')
+customer_df.to_sql('customer_dim', conn, index=False, if_exists='replace')
+
+# Verify by checking the tables
+query = "SELECT name FROM sqlite_master WHERE type='table';"
+tables = pd.read_sql_query(query, conn)
+print(tables)
+
