@@ -29,6 +29,8 @@ print(customer_df.head())
 
 
 
+
+
 query = """
 SELECT 
     item_dim.item_name, 
