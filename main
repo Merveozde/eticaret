@@ -12,3 +12,6 @@ print(trans_df.head())
 print(item_df.head())
 print(store_df.head())
 print(customer_df.head())
+
+
+print(Path to dataset files: path)
