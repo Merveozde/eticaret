@@ -28,6 +28,41 @@ print(store_df.head())
 print(customer_df.head())
 
 
+
+query = """
+SELECT 
+    item_dim.item_name, 
+    SUM(fact_table.quantity * item_dim.unit_price) AS total_sales
+FROM 
+    fact_table 
+JOIN 
+    item_dim 
+ON 
+    fact_table.item_key = item_dim.item_key
+GROUP BY 
+    item_dim.item_name
+ORDER BY 
+    total_sales DESC
+LIMIT 10;
+"""
+# Running the query and storing the results in a DataFrame
+top_products = pd.read_sql_query(query, conn)
+
+# Display the results
+print(top_products)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 6))
+plt.bar(top_products['item_name'], top_products['total_sales'])
+plt.xticks(rotation=45, ha="right")
+plt.title('Top 10 Products by Total Sales')
+plt.xlabel('Product Name')
+plt.ylabel('Total Sales')
+plt.tight_layout()
+plt.show()
+
+
 import sqlite3
 
 # Create an in-memory SQLite database
