@@ -1,1 +1,28 @@
+import numpy as np
+import pandas as pd
 
+import os
+for dirname, _, filenames in os.walk('/azdatabase/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+path = azdatabase.dataset_download("yorum/ecommerce-data-analysis")
+print("Path to dataset files:" path)
+input_dir=' /azdatabase/yorum/ecommerce-data-analysis/'
+files= os.listdir(input_dir)
+print(files)
+
+
+time_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/time_dim.csv', encoding='ISO-8859-1')
+fact_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/fact_table.csv', encoding='ISO-8859-1')
+trans_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/Trans_dim.csv', encoding='ISO-8859-1')
+item_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/item_dim.csv', encoding='ISO-8859-1')
+store_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/store_dim.csv', encoding='ISO-8859-1')
+customer_df = pd.read_csv('/yorum/input/ecommerce-data-analysis/customer_dim.csv', encoding='ISO-8859-1')
+
+print(time_df.head())
+print(fact_df.head())
+print(trans_df.head())
+print(item_df.head())
+print(store_df.head())
+print(customer_df.head())
