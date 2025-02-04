@@ -1,0 +1,14 @@
+import numpy as np
+import pandas as pd
+
+import os
+for dirname, _, filenames in os.walk('/azdatabase/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+        print(time_df.head())
+print(fact_df.head())
+print(trans_df.head())
+print(item_df.head())
+print(store_df.head())
+print(customer_df.head())
