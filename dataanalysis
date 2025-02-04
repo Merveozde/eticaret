@@ -97,3 +97,12 @@ plt.ylabel('Total Sales')
 plt.tight_layout()
 
 plt.show()
+top_customers=pd.read_sql_query(query1,conn)
+
+
+
+
+
+
+
+
