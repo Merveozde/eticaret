@@ -37,3 +37,7 @@ LİMİT10;
 top_customers=pd.read_sql_query(query1,conn)
 
 
+
+
+
+
