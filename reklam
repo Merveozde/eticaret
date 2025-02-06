@@ -9,7 +9,7 @@ df.describe().T
 df.isna().sum()
 df.columns
 
- Plot 1: CTR by Platform
+#Plot 1: CTR by Platform
 plt.figure(figsize=(8, 5))
 sns.barplot(x="Platform", y="CTR", data=df, estimator=np.mean, palette="coolwarm")
 plt.title("Average CTR by Platform")
@@ -17,3 +17,13 @@ plt.ylabel("CTR (%)")
 plt.xlabel("Platform")
 plt.xticks(rotation=45)
 plt.show()
+
+# Plot 2: Conversion Rate by Content Type
+plt.figure(figsize=(8, 5))
+sns.barplot(x="Content_Type", y="Conversion_Rate", data=df, estimator=np.mean, palette="viridis")
+plt.title("Average Conversion Rate by Content Type")
+plt.ylabel("Conversion Rate (%)")
+plt.xlabel("Content Type")
+plt.xticks(rotation=45)
+plt.show()
+
