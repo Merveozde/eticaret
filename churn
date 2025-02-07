@@ -1,0 +1,57 @@
+import numpy as np 
+import pandas as pd
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+ df=pd.read_csv('/kaggle/input/credit-card-customer-churn-prediction/Churn_Modelling.csv')
+  df.head()
+  df.duplicated().sum()
+  df.drop(['RowNumber','CustomerId','Surname'],inplace=True,axis=1)
+  df.head()
+  import seaborn as sns
+from matplotlib import pyplot as plt
+sns.pairplot(df)
+plt.show()
+
+  df_num=df.select_dtypes(include=['int64','float64'])
+  df_num.corr()
+
+  sns.heatmap(df_num.corr())
+
+  df['Gender']=df['Gender'].apply(lambda x:1 if x=='Male' else 0)
+
+  df.groupby('Gender')['Exited'].value_counts()
+  sns.displot(df['Age'],kde=True)
+  plt.show()
+sns.displot(df['CreditScore'],kde=True)
+plt.show()
+
+  df['HasCrCard'].value_counts()
+df.groupby('HasCrCard')['Exited'].value_counts()
+sns.scatterplot(x=df['Age'],y=df['Exited'])
+plt.show()
+
+sns.countplot(x=df['HasCrCard'],hue=df['Exited'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
