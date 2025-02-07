@@ -36,9 +36,9 @@ plt.show()
 
 sns.countplot(x=df['HasCrCard'],hue=df['Exited'])
 
+df['Gender']=df['Gender'].apply(lambda x:1 if x=='Male' else 0)
 
-
-
+df.groupby('Gender')['Exited'].value_counts()
 
 
 
