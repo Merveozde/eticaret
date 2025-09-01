@@ -198,3 +198,10 @@ ORDER BY
     total_sales DESC
 LIMIT 10;
 """
+customer_dim_name
+fact_table: customer_dim_name_key.total
+fact_table(SUM(chrun_customerID_key))
+customerID_key: customer_dim_name
+item_df.head:customer_key.customer_dim.name.total
+    pd.total_spend(SUM(item_df.head_churn.customer.dim.name.surname))
+    pd.spend(fact_table_churn.customer.dim.ID.password)
